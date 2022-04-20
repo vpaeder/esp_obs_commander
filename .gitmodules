@@ -1,0 +1,6 @@
+[submodule "components/pngle/pkg"]
+	path = components/pngle/pkg
+	url = git://github.com/kikuchan/pngle.git
+[submodule "components/lvglpp"]
+    path = components/lvglpp
+    url = https://github.com/vpaeder/lvglpp.git
