@@ -1,0 +1,321 @@
+menu "ESP32 Controller - General configuration"
+    config ECTRL_FIRMWARE_VERSION
+        string "Firmware version"
+        default "0.1.0"
+        help
+            This is the firmware version.
+endmenu
+
+menu "ESP32 Controller - Storage configuration"
+    config VFAT_VOLUME_NAME
+        string "Data storage partition name"
+        default "data"
+        help
+            This is the name of the partition on which data is stored. Its type must be FAT.
+    
+    config NVS_VOLUME_NAME
+        string "Configuration storage partition name"
+        default "config"
+        help
+            This is the name of the partition on which config is stored. Its type must be NVS.
+    
+    config MAX_VFAT_PATH_LENGTH
+        int "Maximum FAT path length"
+        range 64 2048
+        default 512
+        help
+            Defines maximum path length for file paths on FAT partitions.
+endmenu
+
+menu "ESP32 Controller - UART configuration"
+
+    config UART_EVENT_STACK_SIZE
+        int "Stack size for UART event task"
+        range 1024 16384
+        default 4096
+        help
+            Defines stack size for event loop, in bytes. Set it high enough to prevent stack overflow.
+    
+    config UART_BUF_SIZE
+        int "UART buffer size"
+        range 1024 16384
+        default 1024
+        help
+            Defines UART buffer size, in bytes.
+endmenu
+
+menu "ESP32 Controller - Screen configuration"
+
+    config PIN_TFT_RESX
+        int "Reset pin"
+        range 0 39
+        default 4
+        help
+            Sets GPIO pin number for TFT reset.
+    
+    config PIN_TFT_CSX
+        int "SPI Chip Select pin"
+        range 0 39
+        default 15
+        help
+            Sets GPIO pin number for SPI chip select.
+
+    config PIN_TFT_SDO
+        int "SPI MISO pin"
+        range 0 39
+        default 12
+        help
+            Sets GPIO pin number for SPI MISO.
+
+    config PIN_TFT_SDA
+        int "SPI MOSI pin"
+        range 0 39
+        default 13
+        help
+            Sets GPIO pin number for SPI MOSI.
+
+    config PIN_TFT_DCX
+        int "SPI clock pin"
+        range 0 39
+        default 14
+        help
+            Sets GPIO pin number for SPI clock.
+
+    config PIN_TFT_WRX
+        int "TFT data/command selection pin"
+        range 0 39
+        default 5
+        help
+            Sets GPIO pin number for TFT data/command selection pin.
+
+    config PIN_TFT_BKLT
+        int "TFT backlight control pin"
+        range 0 39
+        default 19
+        help
+            Sets GPIO pin number for TFT backlight dimming pin.
+    
+    choice SPI_CLOCK
+        bool "SPI clock frequency"
+        default SPICLK_10MHZ
+        help
+            Sets SPI clock frequency.
+        
+        config SPICLK_1MHZ
+            bool "1 MHz"
+        config SPICLK_2MHZ
+            bool "2 MHz"
+        config SPICLK_4MHZ
+            bool "4 MHz"
+        config SPICLK_8MHZ
+            bool "8 MHz"
+        config SPICLK_10MHZ
+            bool "10 MHz"
+        config SPICLK_20MHz
+            bool "20 MHz"
+        config SPICLK_40MHZ
+            bool "40 MHz"
+        config SPICLK_80MHZ
+            bool "80 MHz"
+    endchoice
+
+    config SPI_MAX_TRANSFER_SIZE
+        int "SPI maximum transfer size"
+        range 20 16384
+        default 6400
+        help
+            Defines maximum size of single SPI transfer, in bytes.
+
+    config SPI_QUEUE_LENGTH
+        int "SPI queue length"
+        range 1 65535
+        default 2
+        help
+            Defines SPI queue length (number of buffers that can be prepared before batch send).
+
+    config SPI_CLOCK
+        int
+        default 1000000 if SPICLK_1MHZ
+        default 2000000 if SPICLK_2MHZ
+        default 4000000 if SPICLK_4MHZ
+        default 8000000 if SPICLK_8MHZ
+        default 10000000 if SPICLK_10MHZ
+        default 20000000 if SPICLK_20MHZ
+        default 40000000 if SPICLK_40MHZ
+        default 80000000 if SPICLK_80MHZ
+    
+    config TFT_SCREEN_WIDTH
+        int "Screen width"
+        range 32 6400
+        default 320
+        help
+            Screen width in pixels
+    
+    config TFT_SCREEN_HEIGHT
+        int "Screen height"
+        range 32 6400
+        default 240
+        help
+            Screen height in pixels
+
+    choice COLOR_FORMAT
+        bool "TFT color format"
+        default ST7789VI_COLMOD_CTRL_12BIT
+        help
+            Sets TFT color format.
+        
+        config ST7789VI_COLMOD_CTRL_12BIT
+            bool "12 bit"
+        config ST7789VI_COLMOD_CTRL_16BIT
+            bool "16 bit"
+        config ST7789VI_COLMOD_CTRL_18BIT
+            bool "18 bit"
+        config ST7789VI_COLMOD_CTRL_24BIT
+            bool "24 bit"
+    
+    endchoice
+    config COLOR_FORMAT
+        int
+        default 3 if ST7789VI_COLMOD_CTRL_12BIT
+        default 5 if ST7789VI_COLMOD_CTRL_16BIT
+        default 6 if ST7789VI_COLMOD_CTRL_18BIT
+        
+endmenu
+
+menu "ESP32 Controller - Touch panel configuration"
+
+    config PIN_TOUCH_XL
+        int "Touch panel XL pin"
+        range 0 39
+        default 33
+        help
+            Sets GPIO pin number for touch panel XL pin.
+
+    config PIN_TOUCH_XR
+        int "Touch panel XR pin"
+        range 0 39
+        default 26
+        help
+            Sets GPIO pin number for touch panel XR pin.
+
+    config PIN_TOUCH_YD
+        int "Touch panel YD pin"
+        range 0 39
+        default 32
+        help
+            Sets GPIO pin number for touch panel YD pin.
+
+    config PIN_TOUCH_YU
+        int "Touch panel YU pin"
+        range 0 39
+        default 25
+        help
+            Sets GPIO pin number for touch panel YU pin.
+    
+    config TOUCH_TRIG_PRESSURE
+        int "Touch pressure level triggering an event"
+        range 0 1023
+        default 250
+        help
+            Screen height in pixels
+
+    choice TOUCH_USE_INTERRUPT
+        bool "Touch reading uses interrupt"
+        default TOUCH_NO_INT
+        help
+            If set to yes, touch events are read using an interrupt;
+            If set to no, touch events are read by polling touch pressure.
+            Using interrupt is faster but doesn't permit drag events.
+        
+        config TOUCH_NO_INT
+            bool "No"
+        config TOUCH_WITH_INT
+            bool "Yes"
+    endchoice
+        
+endmenu
+
+menu "ESP32 Controller - GPIO pins configuration"
+    config PIN_POT_1
+        int "Physical pin for potentiometer 1"
+        range 0 39
+        default 35
+        help
+            Tells on which pin to read potentiometer 1.
+
+    config PIN_POT_2
+        int "Physical pin for potentiometer 2"
+        range 0 39
+        default 36
+        help
+            Tells on which pin to read potentiometer 2.
+    
+    config PIN_BATT_MON
+        int "Physical pin for battery monitoring"
+        range 0 39
+        default 39
+        help
+            Tells on which pin to read battery level.
+    
+    config PIN_BATT_CHRG
+        int "Physical pin for battery charger state"
+        range 0 39
+        default 21
+        help
+            Tells on which pin to read battery charger state.
+endmenu
+
+menu "ESP32 Controller - Network configuration"
+    config WIFI_SSID
+        string "WiFi SSID"
+        default ""
+        help
+            SSID of WiFi network to connect to.
+
+    config WIFI_PASSWORD
+        string "WiFi password"
+        default ""
+        help
+            Password for WiFi network to connect to.
+    
+    config WIFI_MAX_RETRIES
+        int "Maximum number of connection retries for WiFi"
+        range 0 65535
+        default 9999
+        help
+            Maximum number of connection retries if WiFi connection fails or is lost.
+    
+    config WEBSOCKET_HOST
+        string "WebSocket host name or IP address"
+        default ""
+        help
+            Host name or IP address of WebSocket host to connect to.
+
+    config WEBSOCKET_PORT
+        int "WebSocket host port"
+        range 0 65535
+        default 8080
+        help
+            Port of WebSocket host to connect to.
+    
+    config WEBSOCKET_PATH
+        string "WebSocket path"
+        default "/"
+        help
+            Path on WebSocket host.
+            
+    config WEBSOCKET_BUF_SIZE
+        int "WebSocket buffer size"
+        range 1024 16384
+        default 1024
+        help
+            Buffer size for WebSocket client.
+        
+    config WEBSOCKET_POLL_RATE_MS
+        int "WebSocket polling rate"
+        range 5 1000
+        default 10
+        help
+            Polling rate for WebSocket client, in ms.
+
+endmenu

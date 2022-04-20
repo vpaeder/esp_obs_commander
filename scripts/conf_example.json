@@ -1,0 +1,175 @@
+{
+  "wifi": {
+    "ssid": "NetworkSSID",
+    "password": "Network password"
+  },
+  
+  "websocket": {
+    "host": "websocket_host_address",
+    "port": "4444"
+  },
+  
+  "screen": {
+    "orientation": 0,
+    "bl_lvl_act": 1023,
+    "bl_lvl_dimmed": 100,
+    "bl_dim_delay": 15000,
+    "bg_color": {"r":0, "g": 0, "b": 0}
+  },
+  
+  "battery": {
+    "raw_min": 1000,
+    "raw_max": 1100
+  },
+  
+  "buttons": [
+    {
+      "index": 0,
+      "type": 0,
+      "imageInactive": {"filename":"images/scene1.png", "target":"images/scene1.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "SetCurrentProgramScene",
+          "requestData": {
+            "sceneName": "First scene"
+          }
+        }
+      }
+    },
+  
+    {
+      "index": 1,
+      "type": 0,
+      "imageInactive": {"filename":"images/scene2.png", "target":"images/scene2.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "SetCurrentProgramScene",
+          "requestData": {
+            "sceneName": "Second scene"
+          }
+        }
+      }
+    },
+  
+    {
+      "index": 2,
+      "type": 0,
+      "imageInactive": {"filename":"images/scene3.png", "target":"images/scene3.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "SetCurrentProgramScene",
+          "requestData": {
+            "sceneName": "Third scene"
+          }
+        }
+      }
+    },
+
+    {
+      "index": 3,
+      "type": 1,
+      "imageActive": {"filename":"images/pause.png", "target":"images/pause.png"},
+      "imageInactive": {"filename":"images/play.png", "target":"images/play.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_off": {
+        "op": 6,
+        "d": {
+          "requestType": "ResumeRecord"
+        }
+      },
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "PauseRecord"
+        }
+      }
+    },
+
+    {
+      "index": 4,
+      "type": 1,
+      "imageActive": {"filename":"images/volume_off.png", "target":"images/volume_off.png"},
+      "imageInactive": {"filename":"images/volume_on.png", "target":"images/volume_on.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_off": {
+        "op": 6,
+        "d": {
+          "requestType": "SetInputMute",
+          "requestData": {
+            "inputName": "Main input",
+            "inputMuted": false
+          }
+        }
+      },
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "SetInputMute",
+          "requestData": {
+            "inputName": "Main input",
+            "inputMuted": true
+          }
+        }
+      }
+    },
+
+    {
+      "index": 5,
+      "type": 1,
+      "imageActive": {"filename":"images/music_off.png", "target":"images/music_off.png"},
+      "imageInactive": {"filename":"images/music_on.png", "target":"images/music_on.png"},
+      "event_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "command_off": {
+        "op": 6,
+        "d": {
+          "requestType": "SetInputMute",
+          "requestData": {
+            "inputName": "Music",
+            "inputMuted": false
+          }
+        }
+      },
+      "command_on": {
+        "op": 6,
+        "d": {
+          "requestType": "SetInputMute",
+          "requestData": {
+            "inputName": "Music",
+            "inputMuted": true
+          }
+        }
+      }
+    }
+  ],
+  
+  "potentiometers": [
+    {
+      "index": 0,
+      "bg_color": {"r":135, "g": 16, "b": 8, "a": 150},
+      "fg_color": {"r":244, "g": 67, "b": 54, "a": 255},
+      "raw_min": 0,
+      "raw_max": 1000,
+      "obs_min":0,
+      "obs_max": 20,
+      "divider": 1,
+      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Main input\", \"inputVolumeMul\":%0.2f}}}"
+    },
+    {
+      "index": 1,
+      "bg_color": {"r":6, "g": 67, "b": 116, "a": 150},
+      "fg_color": {"r":33, "g": 150, "b": 243, "a": 255},
+      "raw_min": 0,
+      "raw_max": 1000,
+      "obs_min":0,
+      "obs_max": 20,
+      "divider": 1,
+      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Music\", \"inputVolumeMul\":%0.2f}}}"
+    }
+  ]
+}
