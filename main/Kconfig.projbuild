@@ -294,7 +294,7 @@ menu "ESP32 Controller - Network configuration"
     config WEBSOCKET_PORT
         int "WebSocket host port"
         range 0 65535
-        default 8080
+        default 4455
         help
             Port of WebSocket host to connect to.
     
