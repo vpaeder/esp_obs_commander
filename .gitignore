@@ -26,7 +26,8 @@ ldgen_libraries
 Makefile
 partition-table-flash_args
 project_description.json
-sdkconfig*
+sdkconfig
+sdkconfig.old
 
 
 *.pyc
