@@ -17,11 +17,9 @@ namespace eobsws::comm::pipe {
     const std::string & wifi_password,
     const std::string & ws_host,
     uint16_t ws_port,
-    const std::string & ws_path) : WiFiPipe(db, wifi_ssid, wifi_password)
+    const std::string & ws_path) : WiFiPipe(db, wifi_ssid, wifi_password),
+    ws_host(ws_host), ws_port(ws_port), ws_path(ws_path)
   {
-    this->ws_host = ws_host;
-    this->ws_port = ws_port;
-    this->ws_path = ws_path;
     // subscribe callback to data broker
     this->db->subscribe(this->convert_callback<WebSocketPipe>(this));
   }

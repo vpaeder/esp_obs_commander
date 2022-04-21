@@ -18,7 +18,7 @@ except getopt.GetoptError:
 
 # default values
 host = None
-port = 4444
+port = 4455
 password = ""
 authentication = ""
 
@@ -65,6 +65,7 @@ def new_client(client, server):
     print("Client connected with ID {client_id}.".format(client_id=client["id"]))
     challenge = random_string(32)
     salt = random_string(32)
+    
     data = {
         "op": 0,
         "d": {

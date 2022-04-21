@@ -126,10 +126,11 @@ namespace eobsws::impl {
     void setup_websocket(std::shared_ptr<comm::DataBroker> db, const Configuration & cfg, OBSData & odata) {
         // load obs-websocket handler blocks: pipe, parser with stubs
         odata.ws_pipe = std::make_shared<comm::pipe::WebSocketPipe>(db,
-            cfg.wifi_ssid, cfg.wifi_password, cfg.websocket_host, cfg.websocket_port, cfg.websocket_path);
+            cfg.wifi_ssid, cfg.wifi_password,
+            cfg.websocket_host, cfg.websocket_port, cfg.websocket_path);
         odata.obs_parser = std::make_shared<comm::parser::OBSParser>(db);
         odata.obs_reply_parser = std::make_shared<comm::parser::OBSReplyParser>(db);
-        odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSHello>());
+        odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSHello>(cfg.websocket_password));
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSIdentified>());
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSEvent>());
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSRequestResponse>());

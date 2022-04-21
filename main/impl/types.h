@@ -122,6 +122,11 @@ namespace eobsws::impl {
          */
         std::string websocket_path;
 
+        /** \property std::string websocket_password
+         *  \brief Password for obs-websocket server.
+         */
+        std::string websocket_password;
+
         /** \property lv_disp_rot_t screen_orientation
          *  \brief Screen orientation: LV_DISP_ROT_NONE or LV_DISP_ROT_180
          */

@@ -17,6 +17,7 @@ namespace eobsws::impl {
         // WebSockets settings
         this->websocket_host = nvs->get_string("websocket", "host", CONFIG_WEBSOCKET_HOST);
         this->websocket_port = nvs->get_item<uint16_t>("websocket", "port", CONFIG_WEBSOCKET_PORT);
+        this->websocket_password = nvs->get_string("websocket", "password", CONFIG_WEBSOCKET_PASSWORD);
         this->websocket_path = nvs->get_string("websocket", "path", CONFIG_WEBSOCKET_PATH);
         // screen settings
         this->screen_orientation = static_cast<lv_disp_rot_t>(

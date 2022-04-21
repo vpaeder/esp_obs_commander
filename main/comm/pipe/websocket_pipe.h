@@ -39,11 +39,6 @@ namespace eobsws::comm::pipe {
      */
     std::string ws_path;
     
-    /** \property std::string ws_password
-     *  \brief WebSocket server password
-     */
-    std::string ws_password;
-    
     /** \property char data[UART_BUF_SIZE]
      *  \brief Data buffer.
      */

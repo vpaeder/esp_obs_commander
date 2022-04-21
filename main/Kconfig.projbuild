@@ -304,6 +304,12 @@ menu "ESP32 Controller - Network configuration"
         help
             Path on WebSocket host.
             
+    config WEBSOCKET_PASSWORD
+        string "WebSocket password"
+        default ""
+        help
+            Password to connect to obs-websocket server.
+    
     config WEBSOCKET_BUF_SIZE
         int "WebSocket buffer size"
         range 1024 16384
