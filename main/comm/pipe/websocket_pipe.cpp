@@ -65,7 +65,8 @@ namespace eobsws::comm::pipe {
   }
   int WebSocketPipe::write_bytes(const char * bytes, uint16_t len) {
     if (this->connected && esp_websocket_client_is_connected(this->ws_client)) {
-        esp_websocket_client_send_text(this->ws_client, bytes, len, 500/portTICK_PERIOD_MS);
+      ESP_LOGI("WebSocketPipe", "sending message: %.*s", len, bytes);
+      esp_websocket_client_send_text(this->ws_client, bytes, len, 500/portTICK_PERIOD_MS);
       return len;
     }
     return -1;
@@ -94,8 +95,10 @@ namespace eobsws::comm::pipe {
           this->connected = false;
           break;
       case WEBSOCKET_EVENT_DATA:
-          if (data->op_code == 0x08 && data->data_len == 2) {
+          if (data->op_code == 0x08) {
               // connection close
+              ESP_LOGI("WebSocketPipe", "got connection close frame with data=%.*s", data->data_len-2, static_cast<const char*>(data->data_ptr+2));
+              this->connected = false; 
           } else if (data->op_code == 0x00 || data->op_code == 0x01 || data->op_code == 0x02) {
               // continuation frame, text frame or binary frame
               ESP_LOGI("WebSocketPipe", "Received=%.*s", data->data_len, (char *)data->data_ptr);

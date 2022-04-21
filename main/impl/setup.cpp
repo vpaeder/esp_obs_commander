@@ -133,11 +133,20 @@ namespace eobsws::impl {
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSHello>(cfg.websocket_password));
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSIdentified>());
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSEvent>());
+        auto event_stub = odata.ws_stubs.back();
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSRequestResponse>());
+        auto req_resp_stub = odata.ws_stubs.back();
         odata.ws_stubs.emplace_back(std::make_shared<comm::parser::obs::OBSRequestBatchResponse>());
+        auto batch_req_resp_stub = odata.ws_stubs.back();
         // register loaded stubs with parser
         for (auto & stub: odata.ws_stubs)
             odata.obs_parser->register_parser_stub(stub);
+        // set event parser stub to issue event messages
+        event_stub->set_message_type(comm::MessageType::Event);
+        // set response parser stubs to issue event messages; it could be set to something
+        // else but at this point I don't do anything with those
+        req_resp_stub->set_message_type(comm::MessageType::Event);
+        batch_req_resp_stub->set_message_type(comm::MessageType::Event);
     }
 
 }

@@ -32,10 +32,12 @@ namespace eobsws::gui::widgets {
         void publish(lv_event_t * e) override {
             if(this->get_state() & LV_STATE_CHECKED) {
                 ESP_LOGI("ImageToggleButton", "got toggle-on event; sending data: %s", this->message_data.c_str());
-                this->db->publish(this->message_type, this->message_data);
+                this->db->publish(this->message_type,
+                                  comm::parser::obs::add_request_id(this->message_data));
             } else {
                 ESP_LOGI("ImageToggleButton", "got toggle-off event; sending data: %s", this->message_data_off.c_str());
-                this->db->publish(this->message_type, this->message_data_off);
+                this->db->publish(this->message_type,
+                                  comm::parser::obs::add_request_id(this->message_data_off));
             }
         }
 

@@ -96,7 +96,7 @@ namespace eobsws::comm::pipe {
     ~WebSocketPipe();
 
     /** \fn void connect()
-     *  \brief Initiate a WiFi connection.
+     *  \brief Initiate a WebSocket connection.
      */
     void connect() override;
     

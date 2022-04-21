@@ -4,7 +4,6 @@
 #pragma once
 #include <string>
 #include <algorithm>
-#include <sstream>
 #include <iomanip>
 
 #include "esp_system.h"
@@ -52,10 +51,11 @@ static std::tuple<std::string, std::string> split_first(const std::string & str,
  */
 static std::string uuid_generate() {
     uint8_t buf[16];
+    std::string res(32, '\0');
     esp_fill_random(buf, sizeof(buf));
     buf[6] = (buf[6] & 0xf) | 0x40; // version
     buf[8] = (buf[8] | 0x80) & ~0x40; // variant
-    std::ostringstream ss;
-    ss << std::setfill('0') << std::setw(32) << std::hex << buf;
-    return ss.str();
+    for (size_t i=0; i<16; i++)
+        sprintf(&res[2*i], "%02x", buf[i]);
+    return res;
 }

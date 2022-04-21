@@ -10,6 +10,7 @@
 #include "cJSON.h"
 #include "esp_log.h"
 
+#include "util.h"
 #include "obs_parser_stub.h"
 
 namespace eobsws::comm::parser::obs {
@@ -30,6 +31,16 @@ namespace eobsws::comm::parser::obs {
         cJSON_AddItemToObject(root, "d", data=cJSON_CreateObject());
         cJSON_AddNumberToObject(data, "rpcVersion", rpcVersion);
         return root;
+    }
+
+    
+    std::string add_request_id(const std::string & req) {
+        cJSON * js = cJSON_Parse(req.c_str());
+        auto payload = cJSON_GetObjectItem(js, "d");
+        cJSON_AddStringToObject(payload, "requestId", uuid_generate().c_str());
+        auto dump = cJSON_Print(js);
+        cJSON_Delete(js);
+        return std::string(dump);
     }
 
 
@@ -145,8 +156,8 @@ namespace eobsws::comm::parser::obs {
          * eventIntent : integer
          * eventData : object
          */
-        if (!cJSON_HasObjectItem(js, "eventType") || cJSON_HasObjectItem(js, "eventIntent")
-            || cJSON_HasObjectItem(js, "eventData")) {
+        if (!cJSON_HasObjectItem(js, "eventType") || !cJSON_HasObjectItem(js, "eventIntent")
+            || !cJSON_HasObjectItem(js, "eventData")) {
             cJSON_Delete(js);
             return parser_error(this->parser_message_type, "Misformed event message.");
         }

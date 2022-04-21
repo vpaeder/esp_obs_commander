@@ -137,7 +137,7 @@ if fname is not None:
     # parse screen options
     if screen_str in data:
         print("Processing screen options...")
-        if not has_keys(data[screen_str], ["orientation", "backlight_level", "bg_color"]) or not(has_keys(data[screen_str]["bg_color"],["r","g","b"])):
+        if not has_keys(data[screen_str], ["orientation", "bl_lvl_act", "bl_lvl_dimmed", "bl_dim_delay", "bg_color"]) or not(has_keys(data[screen_str]["bg_color"],["r","g","b"])):
             print("Screen - mandatory properties:")
             print("  orientation: 0 for potentiometers on the right, 1 for left.")
             print("  bl_lvl_act: backlight level when screen is active, with 0 = off and 1023 = maximum.")

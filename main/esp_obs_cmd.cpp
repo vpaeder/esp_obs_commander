@@ -132,7 +132,8 @@ extern "C" void app_main(void) {
                 // generates command - if succesfull, sends data
                 auto nchr = sprintf(buffer, cfg.pots[n].command.c_str(), value);
                 if (nchr>0)
-                    db->publish(comm::MessageType::OutboundWireless, std::string(buffer, nchr));
+                    db->publish(comm::MessageType::OutboundWireless,
+                                comm::parser::obs::add_request_id(std::string(buffer, nchr)));
             }
         }
         // reads WiFi RSSI and updates icon

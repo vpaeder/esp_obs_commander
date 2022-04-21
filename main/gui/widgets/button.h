@@ -26,7 +26,8 @@ namespace eobsws::gui::widgets {
             ESP_LOGI("Button::publish", "Publishing: %s", this->message_data.c_str());
             lv_event_code_t code = lv_event_get_code(e);
             if(code == LV_EVENT_CLICKED || code == LV_EVENT_RELEASED) {
-                this->db->publish(this->message_type, this->message_data);
+                this->db->publish(this->message_type,
+                                  comm::parser::obs::add_request_id(this->message_data));
             }
         }
 

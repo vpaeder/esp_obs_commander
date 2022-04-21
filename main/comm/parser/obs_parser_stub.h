@@ -39,6 +39,13 @@ namespace eobsws::comm::parser::obs {
         return std::to_string(static_cast<uint8_t>(op));
     }
 
+    /** \fn std::string add_request_id(const std::string & req)
+     *  \brief Adds a request ID to a request message.
+     *  \param req: request to add ID to. This must be a string parsable to JSON.
+     *  \returns modified string.
+     */
+    std::string add_request_id(const std::string & req);
+
     /** \class OBSHello
      *  \brief Class for parsing 'Hello' messages (opcode 0).
      */

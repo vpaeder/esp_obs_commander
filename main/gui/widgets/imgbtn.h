@@ -55,7 +55,8 @@ namespace eobsws::gui::widgets {
             lv_event_code_t code = lv_event_get_code(e);
             ESP_LOGI("ImageButton", "got event; sending data: %s", this->message_data.c_str());
             if(code == LV_EVENT_CLICKED || code == LV_EVENT_RELEASED)
-                this->db->publish(this->message_type, this->message_data);
+                this->db->publish(this->message_type,
+                                  comm::parser::obs::add_request_id(this->message_data));
         }
 
         /** \fn void refresh_src(ImagePosition pos, lv_imgbtn_state_t state)
