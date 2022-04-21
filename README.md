@@ -26,7 +26,7 @@ I'll add some pics of a real device when I'll have taken meaningful pics of one.
 <strong>3D model - front view</strong>
 </div>
 <div align="center">
-<img src="https://user-images.githubusercontent.com/6388158/164291644-6e4721d6-bb7f-4333-9523-949af0fde59b.png" alt="default touch interface" width="400"/>
+<img src="https://user-images.githubusercontent.com/6388158/164441908-b3c408cb-1ae1-4c87-b7b1-7d5f2c05ab33.png" alt="default touch interface" width="400"/>
 <strong>default touch interface</strong>
 </div>
 
