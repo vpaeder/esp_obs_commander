@@ -16,7 +16,7 @@ namespace eobsws::impl {
         this->wifi_password = nvs->get_string("wifi", "password", CONFIG_WIFI_PASSWORD);
         // WebSockets settings
         this->websocket_host = nvs->get_string("websocket", "host", CONFIG_WEBSOCKET_HOST);
-        this->websocket_port = nvs->get_item("websocket", "port", CONFIG_WEBSOCKET_PORT);
+        this->websocket_port = nvs->get_item<uint16_t>("websocket", "port", CONFIG_WEBSOCKET_PORT);
         this->websocket_path = nvs->get_string("websocket", "path", CONFIG_WEBSOCKET_PATH);
         // screen settings
         this->screen_orientation = static_cast<lv_disp_rot_t>(
