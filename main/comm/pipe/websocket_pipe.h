@@ -39,10 +39,10 @@ namespace eobsws::comm::pipe {
      */
     std::string ws_path;
     
-    /** \property char data[UART_BUF_SIZE]
+    /** \property char data[CONFIG_WS_BUFFER_SIZE]
      *  \brief Data buffer.
      */
-    char data[CONFIG_WEBSOCKET_BUF_SIZE];
+    char data[CONFIG_WS_BUFFER_SIZE];
     
     /** \property esp_websocket_client_handle_t ws_client
      *  \brief Instance of WebSocket client.

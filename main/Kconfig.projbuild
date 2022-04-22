@@ -309,19 +309,5 @@ menu "ESP32 Controller - Network configuration"
         default ""
         help
             Password to connect to obs-websocket server.
-    
-    config WEBSOCKET_BUF_SIZE
-        int "WebSocket buffer size"
-        range 1024 16384
-        default 1024
-        help
-            Buffer size for WebSocket client.
-        
-    config WEBSOCKET_POLL_RATE_MS
-        int "WebSocket polling rate"
-        range 5 1000
-        default 10
-        help
-            Polling rate for WebSocket client, in ms.
-
+            
 endmenu

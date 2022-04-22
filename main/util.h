@@ -30,7 +30,8 @@ static std::string trim_string(std::string str) {
  *  \returns true if string represents a number, false otherwise.
  */
 static bool is_numeric(const std::string & numstr) {
-    return std::all_of(numstr.begin(), numstr.end(), isdigit);
+    const std::string nums = "-.0123456789";
+    return std::all_of(numstr.begin(), numstr.end(), [nums](const char & c) -> bool { return nums.find_first_of(c)!=std::string::npos;});
 }
 
 /** \fn static std::tuple<std::string, std::string> split_first(const std::string & str, std::string dlm)

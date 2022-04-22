@@ -39,8 +39,9 @@ namespace eobsws::comm::pipe {
           esp_websocket_client_config_t websocket_cfg = {};
           websocket_cfg.host = this->ws_host.c_str();
           websocket_cfg.port = this->ws_port;
-          websocket_cfg.buffer_size = CONFIG_WEBSOCKET_BUF_SIZE;
+          websocket_cfg.buffer_size = CONFIG_WS_BUFFER_SIZE;
           websocket_cfg.task_stack = 8192;
+          websocket_cfg.task_prio = 18;
           
           ESP_LOGI("WebSocketPipe", "initializing WebSocket client.");
 

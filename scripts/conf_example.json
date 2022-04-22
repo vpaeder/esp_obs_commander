@@ -155,10 +155,10 @@
       "fg_color": {"r":244, "g": 67, "b": 54, "a": 255},
       "raw_min": 0,
       "raw_max": 1000,
-      "obs_min":0,
-      "obs_max": 20,
+      "obs_min":-100,
+      "obs_max": 26,
       "divider": 1,
-      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Main input\", \"inputVolumeMul\":%0.2f}}}"
+      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Main input\", \"inputVolumeDb\":%0.2f}}}"
     },
     {
       "index": 1,
@@ -166,10 +166,10 @@
       "fg_color": {"r":33, "g": 150, "b": 243, "a": 255},
       "raw_min": 0,
       "raw_max": 1000,
-      "obs_min":0,
-      "obs_max": 20,
+      "obs_min":-100,
+      "obs_max": 26,
       "divider": 1,
-      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Music\", \"inputVolumeMul\":%0.2f}}}"
+      "command": "{\"op\": 6, \"d\": {\"requestType\": \"SetInputVolume\", \"requestData\": {\"inputName\":\"Music\", \"inputVolumeDb\":%0.2f}}}"
     }
   ]
 }

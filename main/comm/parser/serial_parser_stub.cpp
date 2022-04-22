@@ -230,6 +230,7 @@ namespace eobsws::comm::parser::serial {
         std::tie(key, rrdata) = split_first(rdata, ",");
         std::tie(type_str, value_str) = split_first(rrdata, ",");
         auto err = parser_message(this->parser_message_type, false, ATReply::Error);
+        //ESP_LOGE("SetConfigParserStub", "split values: %s, %s, %s, %s", ns.c_str(), key.c_str(), );
 
         if (ns == "" || key == "" || type_str == "" || value_str == "") {
             ESP_LOGE("SetConfigParserStub", "one of the parameters is missing.");
