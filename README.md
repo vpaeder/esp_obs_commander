@@ -8,9 +8,12 @@ The graphical interface is built using [LVGL](https://github.com/lvgl/lvgl) thro
 
 You can find the PCB model that I used for testing [here](https://github.com/vpaeder/kicad_stream_controller)(in French). When I started this, this project costed me, for a single unit (components, PCB and case), about 75€ including shipping. Be aware that you need a little bit of practice with electronics to mount the components correctly. It is of course possible to use another hardware, as long as the screen is big enough. You may need to adapt drivers though.
 
+If you want to build your own setup, you can see the [wiring](#wiring) section.
+
 # Functionalities
 
 - Configurable touch screen interface
+- Six buttons with customizable look and action
 - Two analog potentiometers
 - Battery or USB-powered
 - Wireless control of OBS through WiFi and [obs-websocket](https://github.com/obsproject/obs-websocket)
@@ -36,6 +39,34 @@ I'll add some pics of a real device when I'll have taken meaningful pics of one.
 - [Pngle](https://github.com/kikuchan/pngle), a lightweight PNG loader
 - [OBS Studio](https://obsproject.com) with [obs-websocket](https://github.com/obsproject/obs-websocket)
 - for Python scripts, [pymcp2221](https://github.com/vpaeder/pymcp2221), [pySerial](https://github.com/pyserial/pyserial) and [python-websocket-server](https://github.com/Pithikos/python-websocket-server)
+
+# Wiring
+
+If you can't mount a board, you can as well assemble a device by wiring components together. For this, you need:
+- an ESP32 with enough flash (4MB or more is recommended); if you take a kit, make sure you can access enough GPIO pins; as it is designed, you need 10 digital pins and 5 analog pins connected with ADC1 (ADC2 is not available when WiFi is turned on).
+- a screen with a SPI interface and a resolution of 320x240; I used the 
+    NHD-2.4-240320CF-BSVX-FT from Newhaven Display, which uses a ST7789VI controller.
+- a resistive touch panel with 4 pins; these usually come integrated with the screen module.
+- two analog potentiometers.
+
+By default, the firmware is configured with the following pin mapping (configurable in `menuconfig`):
+- GPIO4: screen reset
+- GPIO15: screen SPI clock
+- GPIO12: screen SPI MISO
+- GPIO13: screen SPI MOSI
+- GPIO14: screen SPI data
+- GPIO5: screen data/command selection pin
+- GPIO19: screen backlight (should be connected to screen through a transistor)
+- GPIO33: touch panel X-
+- GPIO26: touch panel X+
+- GPIO32: touch panel Y-
+- GPIO25: touch panel Y+
+- GPIO35: potentiometer 1
+- GPIO36: potentiometer 2
+- GPIO39: battery monitoring
+- GPIO21: battery charger status
+
+Battery is optional.
 
 # How to compile
 
