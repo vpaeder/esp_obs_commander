@@ -1,13 +1,12 @@
 # ESP-OBS-Commander: A stream controller with obs-websocket and ESP32
 
-This is a project meant to run on an ESP32 wired with a touch screen and a number of other components. It communicates with the [obs-websocket](https://github.com/obsproject/obs-websocket) plugin for OBS Studio, with protocol v5.0.0. My point here was to write a simple toolkit to write functional graphical interfaces for ESP32 in C++. The application to obs-websocket is one use case that is simple enough to test basic building blocks.
+This is a project meant to run on an ESP32 wired with a touch screen and a number of other components. It communicates with the [obs-websocket](https://github.com/obsproject/obs-websocket) plugin for OBS Studio, with protocol v5.0.0.
 
 The project is based on the [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32) and a number of external components (see *dependencies* below). I use [Microsoft Visual Studio Code](https://code.visualstudio.com), for which an [ESP-IDF plugin](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/vscode-setup.html) is available.
 
 The graphical interface is built using [LVGL](https://github.com/lvgl/lvgl) through my own C++ bindings, [lvglpp](https://github.com/vpaeder/lvglpp).
 
-You can find the PCB model that I used for testing [here](https://github.com/vpaeder/kicad_stream_controller)(in French). When I started this, this project costed me, for a single unit (components, PCB and case), about 75€ including shipping. Be aware that you need a little bit of practice with electronics to mount the components correctly.
-
+You can find the PCB model that I used for testing [here](https://github.com/vpaeder/kicad_stream_controller)(in French). When I started this, this project costed me, for a single unit (components, PCB and case), about 75€ including shipping. Be aware that you need a little bit of practice with electronics to mount the components correctly. It is of course possible to use another hardware, as long as the screen is big enough. You may need to adapt drivers though.
 
 # Functionalities
 
