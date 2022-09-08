@@ -21,7 +21,7 @@ If you want to build your own setup, you can see the [wiring](#wiring) section.
 
 # Pics
 
-I'll add some pics of a real device when I'll have taken meaningful pics of one. In the meantime, here's a 3D model of what it looks like and a snapshot of the interface with default settings. Buttons, icons and colors are customizable (see details below).
+I added here pics at different stages of the project. First, the 3D model of what it looks like and a snapshot of the interface with default settings. Then, pics of a working device with 3D-printed case and custom PCB.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/6388158/117356617-9f9ec800-aebc-11eb-991d-d3a8a837ffc3.png" alt="3D model - front view" width="400"/>
@@ -30,6 +30,18 @@ I'll add some pics of a real device when I'll have taken meaningful pics of one.
 <div align="center">
 <img src="https://user-images.githubusercontent.com/6388158/164441908-b3c408cb-1ae1-4c87-b7b1-7d5f2c05ab33.png" alt="default touch interface" width="400"/>
 <strong>default touch interface</strong>
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/6388158/175814979-57df32da-d4c2-40d7-a48f-847d1bab6235.jpg" alt="device in action; front view with interface displayed on screen" width="400"/>
+    <strong>device in action; front view</strong>
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/6388158/175815150-08068d16-00df-47be-850a-310159f6821c.jpg" alt="rear view of fabricated device with leg clipped on and folded out" width="400"/>
+    <strong>rear view of fabricated device with leg clipped on and folded out</strong>
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/6388158/175815155-c259946d-2f1d-404b-b9af-661b7fbbaf35.jpg" alt="inner view of fabricated device with battery, back of potentiometers, switch and ESP32 module showing" width="400"/>
+    <strong>inner view of fabricated device</strong>
 </div>
 
 # Dependencies
