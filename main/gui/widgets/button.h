@@ -6,7 +6,7 @@
  */
 #pragma once
 
-#include "lvglpp/widgets/button.h"
+#include "lvglpp/widgets/button/button.h"
 #include "widget.h"
 
 namespace eobsws::gui::widgets {

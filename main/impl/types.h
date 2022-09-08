@@ -17,7 +17,7 @@
 #include "storage/nvs.h"
 #include "storage/spi_flash.h"
 
-#include "lvglpp/widgets/bar.h"
+#include "lvglpp/widgets/bar/bar.h"
 #include "lvglpp/misc/style.h"
 
 #include "gui/image/image_lvgl.h"

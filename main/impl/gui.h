@@ -5,7 +5,7 @@
  *  License: MIT
  */
 #pragma once
-#include "lvglpp/widgets/image.h"
+#include "lvglpp/widgets/image/image.h"
 #include "types.h"
 
 namespace eobsws::impl {

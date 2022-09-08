@@ -8,9 +8,9 @@
 #include "calibrate.h"
 
 #include "lvglpp/core/display.h"
-#include "lvglpp/widgets/line.h"
-#include "lvglpp/widgets/label.h"
-#include "lvglpp/widgets/button.h"
+#include "lvglpp/widgets/line/line.h"
+#include "lvglpp/widgets/label/label.h"
+#include "lvglpp/widgets/button/button.h"
 #include "lvglpp/misc/style.h"
 #include "lvglpp/misc/anim.h"
 

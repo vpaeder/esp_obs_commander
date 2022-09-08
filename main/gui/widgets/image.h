@@ -6,7 +6,7 @@
  */
 #pragma once
 
-#include "lvglpp/widgets/image.h"
+#include "lvglpp/widgets/image/image.h"
 #include "gui/image/image_lvgl.h"
 #include "gui/image/image_png.h"
 #include "storage/partition.h"

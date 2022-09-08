@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include "gui/image/image.h"
 #include "gui/image/image_png.h"
-#include "lvglpp/widgets/imgbtn.h"
+#include "lvglpp/widgets/imgbtn/imgbtn.h"
 #include "widget.h"
 
 namespace eobsws::gui::widgets {
